@@ -1,0 +1,11 @@
+LIBRARY WIN32KEXT
+
+EXPORTS
+    dr
+	cr
+	uh
+	gh
+	dpsurf
+	dpso
+	dppal
+	help
