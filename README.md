@@ -65,6 +65,6 @@ Guys you need change your Computer
 - [ ] DUMP HANDLE
 - [ ] FONT OBJECT
 
-## Tanks to
+## Thanks to
 
 [SimpleOpt](https://github.com/brofield/simpleopt)
