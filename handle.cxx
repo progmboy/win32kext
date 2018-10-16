@@ -76,42 +76,48 @@ typedef struct _TYPE_DESC
 }TYPE_DESC, *PTYPE_DESC;
 
 TYPE_DESC gGdiTypeDesc[] = 
-{ {0x8a, "Font"},
-  {0x05, "Bitmap"},
-  {0x0a, "Font"},
-  {0x08, "Palette"},
-  {0x04, "Rgn"},
-  {0x10, "Brush"},
-  {0x09, "ColorSpace"},
-  {0x07, "Path"},
-  {0x02, "ColorTransform"},
-  {0x01, "DC"}
+{ 
+  { 0x01, "DC" },
+  { 0x02, "ColorTransform" },
+  { 0x04, "Rgn" },
+  { 0x05, "Bitmap" },
+  { 0x07, "Path" },
+  { 0x08, "Palette" },
+  { 0x09, "ColorSpace" },
+  { 0x0a, "Font" },
+  { 0x0e, "ColorTransform" },
+  { 0x0f, "Sprite" },
+  { 0x10, "Brush" },
+  { 0x12, "LogicSurface" },
+  { 0x13, "Space" },
+  { 0x15, "ServerMetafile" },
+  { 0x1c, "Driver" },
+  { 0x8a, "Font2" },
 };
 
 TYPE_DESC gUserTypeDesc[] =
 {
-	{ 0x0d, "Keyboard"},         //0x78
-	{ 0x0e, "KeyboardLayout" },  //0x78
-	{ 0x0c, "Monitor" },         //0x260
-	{ 0x17, "BaseWindow" },      //0x80
-	{ 0x12, "HidData" },
-	{ 0x02, "Menu" },            //0xb0
 	{ 0x01, "Window" },          //0x190
-	{ 0x10, "Timer" },           //0x88
-	{ 0x05, "WindowHook" },      //0x60
-	{ 0x0f, "EventHook" },       //0x60
-	{ 0x06, "MemoryHandle" },
-	{ 0x07, "CPD" },		     //0x48
-	{ 0x11, "InputContext" },    //0x48
+	{ 0x02, "Menu" },            //0xb0
 	{ 0x03, "Cursor" },			 //0x98
 	{ 0x04, "DeferWindowPos" },  //0x30
-	{ 0x04, "DeferWindowPos" },  //0x30
+	{ 0x05, "WindowHook" },      //0x60
+	{ 0x06, "MemoryHandle" },
+	{ 0x07, "CPD" },		     //0x48
 	{ 0x08, "AcceleratorTable" },
 	{ 0x09, "CsDde" },           //0x40
-	{ 0x14, "TouchInputInfo" },
-	{ 0x0b, "pxs" },             //0x48
 	{ 0x0a, "Conversation" },    //0x60
-	{ 0x15, "GestureInfo" }
+	{ 0x0b, "pxs" },             //0x48
+	{ 0x0c, "Monitor" },         //0x260
+	{ 0x0d, "Keyboard" },        //0x78
+	{ 0x0e, "KeyboardLayout" },  //0x78
+	{ 0x0f, "EventHook" },       //0x60
+	{ 0x10, "Timer" },           //0x88
+	{ 0x11, "InputContext" },    //0x48
+	{ 0x12, "HidData" },
+	{ 0x14, "TouchInputInfo" },
+	{ 0x15, "GestureInfo" },
+	{ 0x17, "BaseWindow" }      //0x80
 };
 
 EXTERN_C
@@ -205,7 +211,7 @@ uh(PDEBUG_CLIENT4 Client, PCSTR args)
 	}
 
 	if (wUniq != -1 && wUniq != phe.wUniq){
-		dprintf("uniq number do not match please check the handle the resoult may be wrong!\n");
+		dprintf("uniq number do not match please check the handle the result may be wrong!\n");
 	}
 
 	

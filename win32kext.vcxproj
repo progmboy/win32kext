@@ -175,6 +175,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="filter.cxx" />
     <ClCompile Include="gdiexts.cxx" />
     <ClCompile Include="handle.cxx" />
     <ClCompile Include="help.cxx" />
