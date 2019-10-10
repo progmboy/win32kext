@@ -5,6 +5,8 @@ EXPORTS
 	cr
 	uh
 	gh
+	dgh
+	duh
 	dpsurf
 	dpso
 	dppal

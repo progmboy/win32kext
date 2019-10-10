@@ -39,6 +39,12 @@
     <ClInclude Include="object\palette.hpp">
       <Filter>Header Files\object</Filter>
     </ClInclude>
+    <ClInclude Include="dbgext.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -57,6 +63,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="filter.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dbgext.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

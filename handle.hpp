@@ -1,7 +1,7 @@
 
 typedef struct _ENTRY
 {
-	ULONG_PTR HandleX;
+	ULONG_PTR HandleNextFree;
 	ULONG ProcessIdOrSome;
 	USHORT DirOrType;
 	UCHAR Type;
@@ -26,8 +26,8 @@ typedef struct _HANDLEENTRYTABLE
 {
 	PENTRY pEntries;
 	ULONG Counts;
-	ULONG field_8;
-	ULONG CurIndex;
+	ULONG LastFreeIndex;
+	ULONG CurDirIndex;
 	ULONG CurLookupIndex;
 	PENTRYDATALOOKUPTABLE pEntryDataLookupTable;
 	//ENTRY Entries[1];
@@ -37,10 +37,10 @@ typedef struct _HANDLEENTRYDIR
 {
 	UCHAR bFilled;
 	UCHAR field_1;
-	USHORT DirIndex;
+	USHORT DirCounts;
 	ULONG field_4;
 	PHANDLEENTRYTABLE pEntryTable[0x100];
-	ULONG MaxGdiHandleCountUserSet;
+	ULONG MaxDirGdiHandleCount;
 	ULONG field_80C;
 }HANDLEENTRYDIR, *PHANDLEENTRYDIR;
 
@@ -52,7 +52,7 @@ typedef struct _HANDLEMGR
 	ULONG MaxGdiHandleCountSystem;
 	ULONG field_C;
 	PHANDLEENTRYDIR pHandleEntryDir;
-	PVOID field_10;
+	PULONG pHandleValueBackup;
 }HANDLEMGR, *PHANDLEMGR;
 
 
