@@ -7,8 +7,8 @@ windbg plugin for win32k debugging
 ```
 gh     [object handle]               -- HMGR entry of handle (GDI object like DC/BITMAP/PALETTE etc)
 uh     [object handle]               -- USER entry of handle (USER object like WINDOW/MENU etc)
-duh    [-h]						               -- Dump USER entry of handle (USER object like WINDOW/MENU etc)
-dgh    [-h]						               -- Dump HMGR entry of handle (GDI object like DC/BITMAP/PALETTE etc)
+duh    [-h]						          -- Dump USER entry of handle (USER object like WINDOW/MENU etc)
+dgh    [-h]						          -- Dump HMGR entry of handle (GDI object like DC/BITMAP/PALETTE etc)
 dpsurf [SURFACE ptr]                 -- SURFACE
 dpso   [SURFOBJ ptr]                 -- SURFACE struct from SURFOBJ
 dr     [REGION ptr]                  -- REGION
