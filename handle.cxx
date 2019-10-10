@@ -507,8 +507,21 @@ DumpGdiHandle(
 	32       24       16        8       0
 	*/
 
-	UINT32 TotalHandleCounts = GetTotalHandleCounts();
+	UINT32 TotalHandleCounts;
 	UINT32 HandleV;
+
+	//
+	// Check type
+	//
+
+	if (Context->Flags & OPT_FL_TYPE) {
+		if (!GetGdiTypeDesc(Context->Type)) {
+			dprintf("Invalid Gdi object type\n");
+			return FALSE;
+		}
+	}
+
+	TotalHandleCounts = GetTotalHandleCounts();
 
 	if (!TotalHandleCounts) {
 		dprintf("Have none gdi handle\n");
@@ -802,6 +815,17 @@ DumpUserHandles(
 {
 	UINT32 TotalHandleCounts;
 	UINT32 HandleV;
+
+	//
+	// Check type
+	//
+
+	if (Context->Flags & OPT_FL_TYPE) {
+		if (!GetUserTypeDesc(Context->Type)) {
+			dprintf("Invalid user object type\n");
+			return FALSE;
+		}
+	}
 
 	g_ExtControl->Execute(DEBUG_OUTCTL_IGNORE, ".reload nt", DEBUG_EXECUTE_NOT_LOGGED);
 	g_ExtControl->Execute(DEBUG_OUTCTL_IGNORE, ".reload win32kbase.sys", DEBUG_EXECUTE_NOT_LOGGED);
