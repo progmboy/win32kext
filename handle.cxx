@@ -480,7 +480,7 @@ ShowDumpGdiHandleHelp()
 
 	LPCSTR lpTypeDesc = gTypeUnknonw;
 	for (int i = 0; i < _countof(gGdiTypeDesc); i++) {
-		dprintf("   id:%d - %s\n", i, gGdiTypeDesc[i].lpszTypeDesc);
+		dprintf("   id:%d - %s\n", gGdiTypeDesc[i].Type, gGdiTypeDesc[i].lpszTypeDesc);
 	}
 
 	dprintf("example:\n");
@@ -562,15 +562,16 @@ DumpGdiHandle(
 
 				Handle = (ULONG)entry.DirOrType << 16 | (USHORT)HandleV;
 
-				if (!Context->Flags ||
-					(Context->Flags & OPT_FL_TYPE && Context->Type == entry.Type)){
-					dprintf("Handle:0x%08x Object=0x%p Type=%s(%d) entry=0x%p processx=0x%x\n",
-						(ULONG64)Handle,
-						LookupEntry.pObject,
-						GetGdiTypeDesc(entry.Type), entry.Type,
-						pEntry, entry.ProcessIdOrSome
-					);
+				if ((Context->Flags & OPT_FL_TYPE && Context->Type != entry.Type)){
+					continue;
 				}
+
+				dprintf("Handle:0x%08x Object=0x%p Type=%s(%d) entry=0x%p processx=0x%x\n",
+					(ULONG64)Handle,
+					LookupEntry.pObject,
+					GetGdiTypeDesc(entry.Type), entry.Type,
+					pEntry, entry.ProcessIdOrSome
+				);
 			}
 		}
 
@@ -780,7 +781,7 @@ ShowDumpUserHandleHelp()
 
 	LPCSTR lpTypeDesc = gTypeUnknonw;
 	for (int i = 0; i < _countof(gUserTypeDesc); i++) {
-		dprintf("   id:%d - %s\n", i, gUserTypeDesc[i].lpszTypeDesc);
+		dprintf("   id:%d - %s\n", gUserTypeDesc[i].Type, gUserTypeDesc[i].lpszTypeDesc);
 	}
 
 	dprintf("example:\n");
@@ -892,18 +893,18 @@ DumpUserHandles(
 				//	KernelHandleEntry.pOwner, pObject, CreateInfo.CreateFlag
 				//);
 
-				if (!Context->Flags ||
-					(Context->Flags & OPT_FL_PROC && Context->Process == (PVOID)pObject) ||
-					(Context->Flags & OPT_FL_TYPE && Context->Type == (int)HandleEntry.Type)){
-
-					ExtOutDml("handle=<link cmd=\"!uh 0x%08x\">0x%08x</link> object=0x%p " \
-						"process=<link cmd=\"!process 0x%p\">0x%p</link> type=(%02d)%-14s\n",
-						(ULONG64)Handle, (ULONG64)Handle,
-						KernelHandleEntry.pObject,
-						pObject, pObject,
-						HandleEntry.Type, GetUserTypeDesc(HandleEntry.Type)
-					);
+				if ((Context->Flags & OPT_FL_PROC && Context->Process != (PVOID)pObject) ||
+					(Context->Flags & OPT_FL_TYPE && Context->Type != (int)HandleEntry.Type)){
+					continue;
 				}
+
+				ExtOutDml("handle=<link cmd=\"!uh 0x%08x\">0x%08x</link> object=0x%p " \
+					"process=<link cmd=\"!process 0x%p\">0x%p</link> type=(%02d)%-14s\n",
+					(ULONG64)Handle, (ULONG64)Handle,
+					KernelHandleEntry.pObject,
+					pObject, pObject,
+					HandleEntry.Type, GetUserTypeDesc(HandleEntry.Type)
+				);
 
 			}
 		}

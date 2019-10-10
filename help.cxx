@@ -10,6 +10,8 @@ char *gaszHelp[] = {
 ,"\n"
 ,"gh     [object handle]               -- HMGR entry of handle (GDI object like DC/BITMAP/PALETTE etc)\n"
 ,"uh     [object handle]               -- USER entry of handle (USER object like WINDOW/MENU etc)\n"
+,"duh    [-h]						   -- Dump USER entry of handle (USER object like WINDOW/MENU etc)\n"
+,"dgh    [-h]						   -- Dump HMGR entry of handle (GDI object like DC/BITMAP/PALETTE etc)\n"
 ,"dpsurf [SURFACE ptr]                 -- SURFACE\n"
 ,"dpso   [SURFOBJ ptr]                 -- SURFACE struct from SURFOBJ\n"
 ,"dr     [REGION ptr]                  -- REGION\n"
